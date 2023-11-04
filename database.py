@@ -13,7 +13,8 @@ from pymongo import MongoClient
 import pymongo
 
 # ------------------------------------------------------------------
-client = motor.motor_asyncio.AsyncIOMotorClient('mongodb://localhost:27017/?retryWrites=true&w=majority')
+#client = motor.motor_asyncio.AsyncIOMotorClient('mongodb://192.168.0.201:27017/?retryWrites=true&w=majority')
+client = motor.motor_asyncio.AsyncIOMotorClient('mongodb://192.168.0.166:27017/?retryWrites=true&w=majority')
 database = client.city
 collection = database.tochigi
 

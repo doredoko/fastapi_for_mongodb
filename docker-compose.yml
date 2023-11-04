@@ -1,10 +1,33 @@
 version: "3"
 services:
-    api:
-        container_name: "api"
-        build: .
-        ports:
+  mongo:
+    image: mongo
+    ports:
+        - "27017:27017"
+    restart: always
+    volumes:
+        - mongodb_data:/data/db
+        - mongodb_config:/data/configdb
+    networks:
+        - mongo_network
+
+  api-fast:
+    container_name: "api-fast"
+    build: .
+    ports:
         - 8000:8000
-        volumes:
+    networks:
+        - mongo_network
+    volumes:
         - .:/var/app/data_volume
-        env_file: .env
+    env_file: .env
+    depends_on:
+        - mongo
+
+networks:
+  mongo_network:
+    external: true
+
+volumes:
+  mongodb_data:
+  mongodb_config:
