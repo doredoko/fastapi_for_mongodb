@@ -4,7 +4,7 @@ services:
         container_name: "api"
         build: .
         ports:
-        - 8000:8080
+        - 8000:8000
         volumes:
         - .:/var/app/data_volume
         env_file: .env
